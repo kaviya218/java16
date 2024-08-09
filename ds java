@@ -1,0 +1,60 @@
+import java.util.Arrays;
+public class BasicArrayOperations
+ {
+ public static void main(String[] args)
+ {
+      int[] numbers = {4, 2, 7, 1, 3};
+        // Traversal
+        System.out.println("Array elements:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println(numbers[i]);
+        }
+         // Insertion
+        numbers = insertElement(numbers, 0, 10); 
+        System.out.println("Array after insertion:");
+        System.out.println(Arrays.toString(numbers));   
+        // Deletion
+        numbers = deleteElement(numbers, 3); 
+        System.out.println("Array after deletion:");
+        System.out.println(Arrays.toString(numbers));  
+        // Searching
+        int index = searchElement(numbers, 7); 
+        System.out.println("Element 7 is at index: " + index);
+    }
+    // Method to insert 
+    public static int[] insertElement(int[] arr, int index, int element) {
+        int[] newArr = new int[arr.length + 1];
+        for (int i = 0, j = 0; i < arr.length; i++, j++) {
+            if (i == index) {
+                newArr[j] = element;
+                j++;
+            }
+            newArr[j] = arr[i];
+        }
+        return newArr;
+    }
+    // Method to delete 
+    public static int[] deleteElement(int[] arr, int index) {
+        if (index < 0 || index >= arr.length) {
+            System.out.println("Invalid index");
+            return arr;
+        }
+        int[] newArr = new int[arr.length - 1];
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            newArr[j++] = arr[i];
+        }
+        return newArr;
+    }
+    // Method to search 
+    public static int searchElement(int[] arr, int element) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == element) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+}
